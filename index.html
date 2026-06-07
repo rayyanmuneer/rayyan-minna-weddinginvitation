@@ -290,7 +290,7 @@
             justify-content: center;
             text-align: center;
             position: relative;
-            padding: 80px 24px 60px;
+            padding: 80px 24px 20px; /* Reduced bottom padding */
             overflow: hidden;
         }
 
@@ -382,29 +382,62 @@
             margin: 16px 0;
         }
 
-        .hero-date-badge {
+        .hero-date-display {
             display: flex;
             align-items: center;
-            gap: 20px;
-            padding: 14px 36px;
-            border: 1px solid rgba(201,168,76,0.4);
-            background: rgba(201,168,76,0.05);
-            backdrop-filter: blur(10px);
+            justify-content: center;
+            gap: clamp(20px, 6vw, 60px);
+            margin: 16px 0;
             animation: fadeInUp 1.2s ease 1.1s both;
-            position: relative;
-        }
-        .hero-date-badge::before, .hero-date-badge::after {
-            content: '✦';
-            color: var(--gold);
-            font-size: 12px;
+            filter: drop-shadow(0 0 20px rgba(201,168,76,0.15));
         }
 
-        .hero-date-text {
-            font-family: var(--font-serif);
-            font-size: clamp(14px, 3.5vw, 18px);
-            letter-spacing: 0.3em;
-            color: var(--gold-light);
+        .hero-date-block {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .hero-month, .hero-day {
+            font-family: var(--font-sans);
+            font-size: 10px;
+            font-weight: 500;
+            letter-spacing: 0.25em;
+            color: var(--gold);
             text-transform: uppercase;
+        }
+
+        .hero-cal-icon {
+            position: relative;
+            width: 70px;
+            height: 70px;
+        }
+
+        .hero-cal-icon svg {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .hero-cal-number {
+            position: absolute;
+            top: 47px;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: var(--font-serif);
+            font-size: 28px;
+            color: var(--gold-light);
+            line-height: 1;
+            font-variant-numeric: lining-nums;
+        }
+
+        .hero-date-divider {
+            width: 1px;
+            height: 90px;
+            background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+            opacity: 0.5;
         }
 
         .hero-scroll-hint {
@@ -436,7 +469,7 @@
            SECTION: QUOTE / VERSE
         ============================================= */
         #verse-section {
-            padding: 80px 24px;
+            padding: 30px 24px 80px; /* Reduced top padding */
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -1012,7 +1045,7 @@
             .countdown-separator { display: none; }
             
             /* Mobile-Specific Premium Enhancements */
-            #hero { padding: 100px 24px 80px; }
+            #hero { padding: 100px 24px 20px; } /* Reduced bottom padding */
             .event-card, .location-card { padding: 48px 24px; }
             .location-link { padding: 16px 32px; font-size: 11px; }
         }
@@ -1158,8 +1191,41 @@
                 <div class="ornament-line reverse"></div>
             </div>
 
-            <div class="hero-date-badge">
-                <span class="hero-date-text">4th &amp; 5th July 2026</span>
+            <div class="hero-date-display">
+                <!-- Day 1 Calendar -->
+                <div class="hero-date-block">
+                    <span class="hero-month">July 2026</span>
+                    <div class="hero-cal-icon">
+                        <svg viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="10" y="20" width="50" height="42" rx="5" stroke="var(--gold)" stroke-width="1.2"/>
+                            <line x1="10" y1="32" x2="60" y2="32" stroke="var(--gold)" stroke-width="1.2"/>
+                            <rect x="18" y="14" width="6" height="12" rx="3" stroke="var(--gold)" stroke-width="1.2" fill="var(--deep-green)"/>
+                            <rect x="32" y="14" width="6" height="12" rx="3" stroke="var(--gold)" stroke-width="1.2" fill="var(--deep-green)"/>
+                            <rect x="46" y="14" width="6" height="12" rx="3" stroke="var(--gold)" stroke-width="1.2" fill="var(--deep-green)"/>
+                        </svg>
+                        <span class="hero-cal-number">4</span>
+                    </div>
+                    <span class="hero-day">Saturday</span>
+                </div>
+
+                <!-- Vertical Divider -->
+                <div class="hero-date-divider"></div>
+
+                <!-- Day 2 Calendar -->
+                <div class="hero-date-block">
+                    <span class="hero-month">July 2026</span>
+                    <div class="hero-cal-icon">
+                        <svg viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="10" y="20" width="50" height="42" rx="5" stroke="var(--gold)" stroke-width="1.2"/>
+                            <line x1="10" y1="32" x2="60" y2="32" stroke="var(--gold)" stroke-width="1.2"/>
+                            <rect x="18" y="14" width="6" height="12" rx="3" stroke="var(--gold)" stroke-width="1.2" fill="var(--deep-green)"/>
+                            <rect x="32" y="14" width="6" height="12" rx="3" stroke="var(--gold)" stroke-width="1.2" fill="var(--deep-green)"/>
+                            <rect x="46" y="14" width="6" height="12" rx="3" stroke="var(--gold)" stroke-width="1.2" fill="var(--deep-green)"/>
+                        </svg>
+                        <span class="hero-cal-number">5</span>
+                    </div>
+                    <span class="hero-day">Sunday</span>
+                </div>
             </div>
 
             <img src="In Sha Allah.png" alt="In Sha Allah" class="inshallah-img" style="margin-top:8px;">
